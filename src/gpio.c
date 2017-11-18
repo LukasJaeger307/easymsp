@@ -55,22 +55,21 @@ RC gpio_configure(uint8_t bank, uint8_t pin, Configuration configuration){
 	}
 }
 
-RC gpio_write(uint8_t bank, uint8_t pin, Level level){
+RC gpio_write(uint8_t bank, uint8_t pin, uint8_t level){
 	if (bank == 1){
 		if (pin > 7){
 			return 0xFF;
 		}
 		else{
 			uint8_t mask = (1 << pin);
-			switch (level){
-				case HIGH:
-					P1OUT |= mask;
-					return 0x00;
-				case LOW:
-					P1OUT &= ~mask;
-					return 0x00;
-				default:
-					return 0xFF;
+			if (level != 0){
+				P1OUT |= mask;
+				return 0x00;
+			}
+			else{
+
+				P1OUT &= ~mask;
+				return 0x00;
 			}
 		}
 	}
@@ -80,19 +79,51 @@ RC gpio_write(uint8_t bank, uint8_t pin, Level level){
 		}
 		else{
 			uint8_t mask = (1 << pin);
-			switch (level){
-				case HIGH:
-					P2OUT |= mask;
-					return 0x00;
-				case LOW:
-					P2OUT &= ~mask;
-					return 0x00;
-				default:
-					return 0xFF;
+			if (level != 0){
+				P1OUT |= mask;
+				return 0x00;
+			}
+			else{
+
+				P1OUT &= ~mask;
+				return 0x00;
 			}
 		}
 	}
 	else{
+		return 0xFF;
+	}
+}
+
+
+RC gpio_read(uint8_t bank, uint8_t pin, uint8_t * const data){
+	if (bank == 1){
+		if (pin > 7) {
+			 return 0xFF;
+		}
+		else {
+			uint8_t mask = 1 << pin;
+			if ((P1IN & mask) != 0){
+				*data = HIGH;
+			} else {
+				*data = LOW;
+			}
+			return 0x00;
+		}
+	} else if (bank == 2){
+		if (pin > 5){
+			return 0xFF;
+		}
+		else {
+			uint8_t mask = 1 << pin;
+			if ((P2IN & mask) != 0){
+				*data = HIGH;
+			} else {
+				*data = LOW;
+			}
+			return 0x00;
+		}
+	} else{
 		return 0xFF;
 	}
 }

@@ -3,15 +3,16 @@
 
 #include "lazy.h"
 
+#define HIGH 0xFF;
 
-
-typedef enum {LOW, HIGH} Level;
-
+#define LOW 0x00;
 
 typedef enum {C_IN, C_OUT, C_IN_PULLUP} Configuration;
 
 RC gpio_configure(uint8_t bank, uint8_t pin, Configuration configuration);
 
-RC gpio_write(uint8_t bank, uint8_t pin, Level level);
+RC gpio_write(uint8_t bank, uint8_t pin, uint8_t level);
+
+RC gpio_read(uint8_t bank, uint8_t pin, uint8_t * const data);
 
 #endif // _GPIO_H_
