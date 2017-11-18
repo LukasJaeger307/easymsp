@@ -7,8 +7,8 @@
 void uart_setup(){
 	//TODO: Add frequency
 
-     P1SEL = RXD + TXD ;                // Select TX and RX functionality for P1.1 & P1.2
-     P1SEL2 = RXD + TXD ;              //
+	P1SEL = RXD + TXD ;               // Select TX and RX functionality for P1.1 & P1.2
+	P1SEL2 = RXD + TXD ;              //
 	UCA0CTL1 |= UCSSEL_2;             // Have USCI use System Master Clock: AKA core clk 1MHz
 	UCA0BR0 = 104;                    // 1MHz 9600, see user manual
 	UCA0BR1 = 0;                      //
@@ -28,5 +28,4 @@ void uart_tx_string(char const * const s){
         UCA0TXBUF = s[i]; 
 		i++;
     }
-
 }

@@ -13,4 +13,8 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#define MHZ 1
+
+typedef uint8_t RC;
+
 #endif //_LAZY_H_

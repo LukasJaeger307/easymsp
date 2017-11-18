@@ -44,7 +44,7 @@ clean : $(BINDIR)/$(P) $(FOLDERS)
 	rm -rf $(DOCDIR)
 													
 serial : $(BINDIR)/$(P)
-	screen /dev/ttyACM0 9600
+	screen /dev/ttyACM0 115200 
 								
 												
 documentation : $(DOCDIR) $(SOURCES) $(INCLUDES)
