@@ -17,4 +17,17 @@
 
 typedef uint8_t RC;
 
+#define RNN(x){		\
+	RC tmp = (x);	\
+	if (tmp != 0){	\
+		return tmp;	\
+	}				\
+}
+
+#define BM(x) (1 << (x))
+
+#define OK (0x00)
+
+#define ERR (0xFF)
+
 #endif //_LAZY_H_

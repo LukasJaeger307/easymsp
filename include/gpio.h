@@ -3,9 +3,9 @@
 
 #include "lazy.h"
 
-#define HIGH 0xFF;
+#define HIGH (0xFF)
 
-#define LOW 0x00;
+#define LOW (0x00)
 
 typedef enum {C_IN, C_OUT, C_IN_PULLUP} Configuration;
 

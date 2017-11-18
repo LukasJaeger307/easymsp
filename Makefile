@@ -15,7 +15,7 @@ CC = gcc
 CROSS = msp430
 CROSS_COMPILE = ${CROSS}-${CC}
 MACHINEFLAGS=-mmcu=msp430g2553
-CFLAGS = -Os -Iinclude -Wextra -std=c99 $(MACHINEFLAGS)
+CFLAGS = -Os -g -Iinclude -Wextra -std=c99 $(MACHINEFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c 
 	$(CROSS_COMPILE) -c -o $@ $< $(CFLAGS)
@@ -49,3 +49,7 @@ serial : $(BINDIR)/$(P)
 												
 documentation : $(DOCDIR) $(SOURCES) $(INCLUDES)
 	doxygen Doxyfile
+
+git : 
+	git add include/*.h src/*.c Makefile .gitignore Doxyfile
+	git status

@@ -5,7 +5,7 @@ RC gpio_configure(uint8_t bank, uint8_t pin, Configuration configuration){
 	if (bank == 1){
 		// Checking, whether the pin exists
 		if (pin > 7){
-			return 0xFF;
+			return ERR;
 		}
 		else{
 			uint8_t mask = (1 << pin);
@@ -13,23 +13,23 @@ RC gpio_configure(uint8_t bank, uint8_t pin, Configuration configuration){
 		switch (configuration){
 			case C_IN:
 				P1DIR &= ~mask;      
-				return 0x00;
+				return OK;
 			case C_IN_PULLUP:
 				P1DIR &= ~mask;      
 				P1OUT |= mask;
 				P1REN |= mask;
-				return 0x00;
+				return OK;
 			case C_OUT:
 				P1DIR |= mask;      
-				return 0x00;
+				return OK;
 			default:
-				return 0xFF;
+				return ERR;
 		}
 		}
 	} if (bank == 2){
 		// Checking, whether the pin exists
 		if (pin > 5){
-			return 0xFF;
+			return ERR;
 		}
 		else{
 			uint8_t mask = (1 << pin);
@@ -37,56 +37,55 @@ RC gpio_configure(uint8_t bank, uint8_t pin, Configuration configuration){
 		switch (configuration){
 			case C_IN:
 				P2DIR &= ~mask;      
-				return 0x00;
+				return OK;
 			case C_IN_PULLUP:
 				P2DIR &= ~mask;      
 				P2OUT |= mask;
 				P2REN |= mask;
-				return 0x00;
+				return OK;
 			case C_OUT:
 				P2DIR |= mask;      
-				return 0x00;
+				return OK;
 			default:
-				return 0xFF;
+				return ERR;
 		}
 		}
 	} else {
-		return 0xFF;
+		return ERR;
 	}
 }
 
 RC gpio_write(uint8_t bank, uint8_t pin, uint8_t level){
 	if (bank == 1){
 		if (pin > 7){
-			return 0xFF;
+			return ERR;
 		}
 		else{
 			uint8_t mask = (1 << pin);
 			if (level != 0){
 				P1OUT |= mask;
-				return 0x00;
+				return OK;
 			}
 			else{
 
 				P1OUT &= ~mask;
-				return 0x00;
+				return OK;
 			}
 		}
 	}
 	else if (bank == 2){
 		if (pin > 5){
-			return 0xFF;
+			return ERR;
 		}
 		else{
 			uint8_t mask = (1 << pin);
 			if (level != 0){
 				P1OUT |= mask;
-				return 0x00;
+				return OK;
 			}
 			else{
-
 				P1OUT &= ~mask;
-				return 0x00;
+				return OK;
 			}
 		}
 	}
