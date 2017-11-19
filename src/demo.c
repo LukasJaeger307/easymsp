@@ -1,7 +1,7 @@
 #include "lazy.h"
 #include "uart.h"
 #include "gpio.h"
-#include "gnampf.h"
+#include "ds18b20.h"
 #include <stdio.h>
 
 #define BUTTON BIT3
@@ -19,13 +19,13 @@ int main(void)
 	while(1)                          // While 1 is equal to 1 (forever)
 	{
 		uint8_t level = LOW;
-		float temperature = get_temp();//0.0;
-		//ds_get_temperature(1,7, &temperature);
+		float temperature; // = get_temp();//0.0;
+		ds_get_temperature(1,4, &temperature);
 		
-		char dings [10];
-		sprintf(dings, "%u.%02u", (int) temperature, (int) ((temperature - (float)((int)(temperature))) * 100));
+		char string [6];
+		sprintf(string, "%u.%02u", (int) temperature, (int) ((temperature - (float)((int)(temperature))) * 100));
 		uart_tx_string("Temperature: ");
-		uart_tx_string(dings);
+		uart_tx_string(string);
 		uart_tx_string("\r\n");
 		__delay_cycles(1000000);
 	}

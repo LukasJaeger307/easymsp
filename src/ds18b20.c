@@ -1,5 +1,4 @@
 #include "ds18b20.h"
-#include "gpio.h"
 
 RC ds_initialize(uint8_t bank, uint8_t pin){
 	if (bank == 1){
@@ -113,18 +112,17 @@ RC ds_read(uint8_t bank, uint8_t pin, uint16_t * const data){
 
 
 RC ds_get_temperature(uint8_t bank, uint8_t pin, float * const data){
-	ds_initialize(bank, pin);
-	ds_send_char(bank, pin, 0xcc);   
-	ds_send_char(bank, pin, 0x44);
-	__delay_cycles(100);
+		ds_initialize(bank, pin);
+		ds_send_char(bank, pin, 0xcc);   
+		ds_send_char(bank, pin, 0x44);
+		__delay_cycles(100);
 
-	ds_initialize(bank, pin);
-	ds_send_char(bank, pin, 0xcc);
-	ds_send_char(bank, pin, 0xbe);
+		ds_initialize(bank, pin);
+		ds_send_char(bank, pin, 0xcc);
+		ds_send_char(bank, pin, 0xbe);
 
-	uint16_t temp; 
-	ds_read(bank, pin, &temp);
-	*data = ((float)temp/8.0);
-	return ERR;
+		uint16_t temp; 
+		ds_read(bank, pin, &temp);
+		*data = ((float)temp/8.0);
+		return OK;
 }
-
