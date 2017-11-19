@@ -1,3 +1,12 @@
+/* 
+ * This program is free software. It comes without any warranty, to
+ * the extent permitted by applicable law. You can redistribute it
+ * and/or modify it under the terms of the Do What The Fuck You Want
+ * To Public License, Version 2, as published by Sam Hocevar. See
+ * http://www.wtfpl.net/ for more details. 
+ */
+
+
 #include "lazy.h"
 #include "uart.h"
 #include "gpio.h"
@@ -8,18 +17,18 @@
 
 int main(void)
 {
-	WDTCTL = WDTPW + WDTHOLD;         // Stop Watch dog timer
-	BCSCTL1 = CALBC1_1MHZ;            // Set DCO to 1 MHz
+	WDTCTL = WDTPW + WDTHOLD;         
+	BCSCTL1 = CALBC1_1MHZ;
 	DCOCTL = CALDCO_1MHZ;
 
 	gpio_configure(1,3, C_IN_PULLUP);
 	gpio_configure(1,6, C_OUT);
 
 	uart_setup();
-	while(1)                          // While 1 is equal to 1 (forever)
+	while(1)               
 	{
 		uint8_t level = LOW;
-		float temperature; // = get_temp();//0.0;
+		float temperature;
 		ds_get_temperature(1,4, &temperature);
 		
 		char string [6];

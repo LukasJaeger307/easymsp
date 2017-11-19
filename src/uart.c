@@ -1,3 +1,11 @@
+/* 
+ * This program is free software. It comes without any warranty, to
+ * the extent permitted by applicable law. You can redistribute it
+ * and/or modify it under the terms of the Do What The Fuck You Want
+ * To Public License, Version 2, as published by Sam Hocevar. See
+ * http://www.wtfpl.net/ for more details. 
+ */
+
 #include "uart.h"
 
 #define RXD        BIT1 //Check your launchpad rev to make sure this is the case. Set jumpers to hardware uart.

@@ -13,7 +13,8 @@
 
 #include "lazy.h"
 
-/**\page ds18b20 Interfacing a DS18B20-thermometer with MSP430
+/**
+ * \page ds18b20 Interfacing a DS18B20-thermometer with MSP430
  * Maxim's DS18B20-thermometers are to be accessed with Maxim's own
  * OneWire-protocol. Unlike SPI or I2C it is not supported natively
  * by an MSP430 so the protocol is emulated. I don't wanna bore you
