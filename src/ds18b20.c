@@ -6,7 +6,7 @@
  * http://www.wtfpl.net/ for more details. 
  */
 
-#include "ds18b20.h"
+#include "easymsp/ds18b20.h"
 
 RC ds_initialize(uint8_t bank, uint8_t pin){
 	if (bank == 1){

@@ -6,7 +6,7 @@
  * http://www.wtfpl.net/ for more details. 
  */
 
-#include "gpio.h"
+#include "easymsp/gpio.h"
 
 RC gpio_configure(uint8_t bank, uint8_t pin, Configuration configuration){
 	// Pin bank 1 (obviously)

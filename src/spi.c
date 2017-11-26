@@ -1,4 +1,4 @@
-#include "spi.h"
+#include "easymsp/spi.h"
 
 RC spi_setup(size_t cs_line_port, size_t cs_line_pin){
 	switch (cs_line_port){

@@ -7,10 +7,10 @@
  */
 
 
-#include "lazy.h"
-#include "uart.h"
-#include "gpio.h"
-#include "ds18b20.h"
+#include "easymsp/lazy.h"
+#include "easymsp/uart.h"
+#include "easymsp/gpio.h"
+#include "easymsp/ds18b20.h"
 #include <stdio.h>
 
 #define BUTTON BIT3

@@ -24,7 +24,7 @@
   * ```
   */
 
-#include "lazy.h"
+#include "easymsp/lazy.h"
 
 /**
   * Sets up the UART interface with 9600 bauds. Other freqencies may be included

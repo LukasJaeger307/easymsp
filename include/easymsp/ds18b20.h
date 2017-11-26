@@ -11,7 +11,7 @@
 #ifndef _DS18B20_H_
 #define _DS18B20_H_
 
-#include "lazy.h"
+#include "easymsp/lazy.h"
 
 /**
  * \page ds18b20 Interfacing a DS18B20-thermometer with MSP430

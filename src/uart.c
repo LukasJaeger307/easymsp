@@ -6,7 +6,7 @@
  * http://www.wtfpl.net/ for more details. 
  */
 
-#include "uart.h"
+#include "easymsp/uart.h"
 
 #define RXD        BIT1 //Check your launchpad rev to make sure this is the case. Set jumpers to hardware uart.
 #define TXD        BIT2 // TXD with respect to what your sending to the computer. Sent data will appear on this line

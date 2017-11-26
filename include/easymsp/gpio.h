@@ -11,7 +11,7 @@
 #ifndef _GPIO_H_
 #define _GPIO_H_
 
-#include "lazy.h"
+#include "easymsp/lazy.h"
 
 /**\page gpio Using pins as GPIO
  * Using a pin as a GPIO is a basic task when using microcontrollers.

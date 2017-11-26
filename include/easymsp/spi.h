@@ -10,7 +10,7 @@
  * http://www.wtfpl.net/ for more details. 
  */
 
-#include "lazy.h"
+#include "easymsp/lazy.h"
 
 /**
  * Sets up the USI-interface B as an SPI-interface.
