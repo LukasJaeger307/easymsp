@@ -22,7 +22,7 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CROSS_COMPILE) -c -o $@ $< $(CFLAGS)
 	
 $(BINDIR)/$(P) : folders lib
-	$(CROSS_COMPILE) $(BINDIR)/libeasymsp.a $(MACHINEFLAGS) -o $(BINDIR)/$(P)
+	$(CROSS_COMPILE) $(OBJDIR)/demo.o $(BINDIR)/libeasymsp.a $(MACHINEFLAGS) -o $(BINDIR)/$(P)
 		
 $(BINDIR):
 	mkdir $(BINDIR)
@@ -40,9 +40,10 @@ lib : $(BINDIR)/libeasymsp.a
 $(BINDIR)/libeasymsp.a : $(OBJECTS)
 	$(CROSS_AR) rcs $(BINDIR)/libeasymsp.a $(OBJECTS)
 							
-#install : $(BINDIR)/$(P)
-#	avrdude -C/usr/share/arduino/hardware/tools/avrdude.conf -v -v -v -v -patmega328p -carduino -P/dev/ttyACM0 -b115200 -D -Uflash:w:$(BINDIR)/$(P).hex:i
-								
+install : $(BINDIR)/$(P)
+	mspdebug rf2500 "prog bin/demo"
+
+
 clean : $(BINDIR)/$(P) $(FOLDERS)
 	rm -f $(OBJDIR)/*.o $(BINDIR)/*.hex $(BINDIR)/*.elf
 	rm -rf $(BINDIR)
