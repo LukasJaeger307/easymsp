@@ -24,7 +24,9 @@
   * ```
   */
 
-#include "easymsp/lazy.h"
+#include "easymsp/easymsp.h"
+
+#if defined(EASYMSP_UART) || defined(EASYMSP_FULL)
 
 /**
   * Sets up the UART interface with 9600 bauds. Other freqencies may be included
@@ -45,5 +47,7 @@ void uart_tx(char c);
   * @param s The string to transmit
   */
 void uart_tx_string(char const * const s);
+
+#endif // EASYMSP_UART
 
 #endif //_UART_H_

@@ -8,6 +8,8 @@
 
 #include "easymsp/gpio.h"
 
+#if defined(EASYMSP_GPIO) || defined(EASYMSP_FULL)
+
 RC gpio_configure(uint8_t bank, uint8_t pin, Configuration configuration){
 	// Pin bank 1 (obviously)
 	if (bank == 1){
@@ -134,3 +136,5 @@ RC gpio_read(uint8_t bank, uint8_t pin, uint8_t * const data){
 		return 0xFF;
 	}
 }
+
+#endif // EASYMSP_GPIO

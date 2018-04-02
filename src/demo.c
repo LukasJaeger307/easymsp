@@ -7,7 +7,7 @@
  */
 
 
-#include "easymsp/lazy.h"
+#include "easymsp/easymsp.h"
 #include "easymsp/uart.h"
 #include "easymsp/gpio.h"
 #include "easymsp/ds18b20.h"

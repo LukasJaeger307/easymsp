@@ -10,7 +10,9 @@
  * http://www.wtfpl.net/ for more details. 
  */
 
-#include "easymsp/lazy.h"
+#include "easymsp/easymsp.h"
+
+#if defined(EASYMSP_SPI) || defined (EASYMSP_FULL)
 
 /**
  * Sets up the USI-interface B as an SPI-interface.
@@ -27,5 +29,7 @@ RC spi_setup(size_t cs_line_port, size_t cs_line_pin);
  * @return The received char
  */
 uint8_t spi_transmit(uint8_t data);
+
+#endif // EASYMSP_SPI
 
 #endif //_SPI_H_

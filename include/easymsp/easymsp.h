@@ -1,6 +1,6 @@
 /**\file */
-#ifndef _LAZY_H_
-#define _LAZY_H_
+#ifndef _EASYMSP_H_
+#define _EASYMSP_H_
 
 /* 
  * This program is free software. It comes without any warranty, to
@@ -9,13 +9,32 @@
  * To Public License, Version 2, as published by Sam Hocevar. See
  * http://www.wtfpl.net/ for more details. 
  */
+// Some defines that include modules
 
+/**
+ * Includes the GPIO-module
+ */
+#define EASYMSP_GPIO
 
-/** \page lazy The lazy-header
-  * Don't you hate to include a bunch of headers that you use in every c-file
-  * anyway manually? That's what the _lazy_-header is doing. It includes _msp430.h_
-  * _stdlib.h_ and _stdint.h_ and defines a handful of helpful macros.
-  */
+/**
+ * Includes the SPI-module
+ */
+#define EASYMSP_SPI
+
+/**
+ * Includes the UART-module
+ */
+#define EASYMSP_UART
+
+/**
+ * Includes the DS18B20-module
+ */
+#define EASYMSP_DS18B20
+
+/**
+ * Includes all modules
+ */
+#define EASYMSP_FULL
 
 
 #include <msp430.h>
@@ -57,4 +76,4 @@ typedef uint8_t RC;
  */
 #define ERR (0xFF)
 
-#endif //_LAZY_H_
+#endif //_EASYMSP_H_H

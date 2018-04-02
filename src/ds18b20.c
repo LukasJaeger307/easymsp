@@ -8,6 +8,8 @@
 
 #include "easymsp/ds18b20.h"
 
+#if defined (EASYMSP_DS18B20) || defined(EASYMSP_FULL)
+
 RC ds_initialize(uint8_t bank, uint8_t pin){
 	if (bank == 1){
 		if (pin > 7){
@@ -134,3 +136,5 @@ RC ds_get_temperature(uint8_t bank, uint8_t pin, float * const data){
 		*data = ((float)temp/8.0);
 		return OK;
 }
+
+#endif // EASYMSP_DS18B20

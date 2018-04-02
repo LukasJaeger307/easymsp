@@ -8,6 +8,8 @@
 
 #include "easymsp/uart.h"
 
+#if defined(EASYMSP_UART) || defined(EASYMSP_FULL)
+
 #define RXD        BIT1 //Check your launchpad rev to make sure this is the case. Set jumpers to hardware uart.
 #define TXD        BIT2 // TXD with respect to what your sending to the computer. Sent data will appear on this line
 
@@ -37,3 +39,5 @@ void uart_tx_string(char const * const s){
 		i++;
     }
 }
+
+#endif // EASYMSP_UART

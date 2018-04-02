@@ -11,7 +11,7 @@
 #ifndef _GPIO_H_
 #define _GPIO_H_
 
-#include "easymsp/lazy.h"
+#include "easymsp/easymsp.h"
 
 /**\page gpio Using pins as GPIO
  * Using a pin as a GPIO is a basic task when using microcontrollers.
@@ -56,6 +56,8 @@
  * resistor inverts the logic levels.
  */
 
+#if defined(EASYMSP_GPIO) || defined (EASYMSP_FULL)
+
 /**
  * Macro for a high level on a GPIO
  */
@@ -98,5 +100,7 @@ RC gpio_write(uint8_t bank, uint8_t pin, uint8_t level);
  * @return _OK_ if the reading operation was successful and _ERR_ otherwise
  */
 RC gpio_read(uint8_t bank, uint8_t pin, uint8_t * const data);
+
+#endif // EASYMSP_GPIO
 
 #endif // _GPIO_H_

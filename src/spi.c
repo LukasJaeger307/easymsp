@@ -1,5 +1,7 @@
 #include "easymsp/spi.h"
 
+#if defined(EASYMSP_SPI) || defined(EASYMSP_FULL)
+
 RC spi_setup(size_t cs_line_port, size_t cs_line_pin){
 	switch (cs_line_port){
 		case 1:
@@ -41,3 +43,5 @@ uint8_t spi_transmit(uint8_t data){
 	while(!(IFG2 & UCB0RXIFG));
 	return UCB0RXBUF;
 }
+
+#endif // EASYMSP_SPI

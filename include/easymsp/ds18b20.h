@@ -11,7 +11,7 @@
 #ifndef _DS18B20_H_
 #define _DS18B20_H_
 
-#include "easymsp/lazy.h"
+#include "easymsp/easymsp.h"
 
 /**
  * \page ds18b20 Interfacing a DS18B20-thermometer with MSP430
@@ -51,6 +51,8 @@
  * which is admittedly not elegant but works fine.
  */
   
+#if defined(EASYMSP_DS18B20) || defined (EASYMSP_FULL)
+
 /**
  * Resets the DS18B20-thermometer.
  * @param bank The bank of pins the thermometer is connected to
@@ -87,5 +89,6 @@ RC ds_read(uint8_t bank, uint8_t pin, uint16_t * const data);
  */
 RC ds_get_temperature(uint8_t bank, uint8_t pin, float * const temperature);
 
+#endif //EASYMSP_DS18B20
 
 #endif // _DS18B20_H_
