@@ -9,6 +9,14 @@
  * To Public License, Version 2, as published by Sam Hocevar. See
  * http://www.wtfpl.net/ for more details. 
  */
+
+/**
+ * \page easymsp The main header for easymsp
+ * All source files include this header. It contains helpful macros, includes
+ * for other headers that every sane person includes in source files anyway
+ * and defines for the modularization system.
+ */
+
 // Some defines that include modules
 
 /**
