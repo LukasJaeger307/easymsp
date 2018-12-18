@@ -12,17 +12,18 @@ OBJECTS := $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
 
 AR = ar
 CC = gcc
-CROSS = msp430
+CROSS = msp430-elf
 CROSS_COMPILE = ${CROSS}-${CC}
 CROSS_AR = ${CROSS}-${AR}
 MACHINEFLAGS=-mmcu=msp430g2553
-CFLAGS = -Os -g -Iinclude -Wextra -std=c99 $(MACHINEFLAGS)
+TOOLCHAINFLAGS=$(HOME)/ti/include
+CFLAGS = -Os -g -I$(TOOLCHAINFLAGS) -Iinclude -Wextra -std=c99 $(MACHINEFLAGS)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c 
 	$(CROSS_COMPILE) -c -o $@ $< $(CFLAGS)
 	
 $(BINDIR)/$(P) : folders lib
-	$(CROSS_COMPILE) $(OBJDIR)/demo.o $(BINDIR)/libeasymsp.a $(MACHINEFLAGS) -o $(BINDIR)/$(P)
+	$(CROSS_COMPILE) -L$(TOOLCHAINFLAGS) $(OBJDIR)/demo.o $(BINDIR)/libeasymsp.a $(MACHINEFLAGS) -o $(BINDIR)/$(P)
 		
 $(BINDIR):
 	mkdir $(BINDIR)

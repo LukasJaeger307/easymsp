@@ -6,14 +6,14 @@ A bunch of handy functions for MSP430 G-series MCUs. It is released under the fr
 - SPI
 - DS18B20 thermometer
 
-In order to build easymsp (or pretty much every other project for MSP430s) you can install all dependencies on Debian or derivatives like Ubuntu or Linux Mint using the following shell command:
+Since most distros are removing the MSP430-toolchain from their repos you need to install the toolchain supplied by TI. Just use a search engine you trust, you will find it. Make sure you install it in the `ti`-subfolder of your home directory (in my case _home/lukas/ti_). Furthermore, you probably need to insert the following line to the `.bashrc`-file located in your `home`-folder:
 
 ```sh
-sudo apt install make gcc-msp430 binutils-msp430 mspdebug doxygen graphviz
+export MSP430="/home/your_username/ti"
+export PATH="$PATH:$MSP430/bin"
 ```
 
-Other distros may work pretty similarly but I am a huge fan of Debian and I have no other distro running right now. Sorry...
-Anyway, if you have the prerequisites installed, you can build easymsp with a simple call of _make_. It builds a small demo app that reads the temperature from a DS18B20 thermometer and prints it on a UART console. If you need documentation, type 
+When you have the prerequisites installed, you can build easymsp with a simple call of _make_. It builds a small demo app that reads the temperature from a DS18B20 thermometer and prints it on a UART console. If you need documentation, install doxygen, type 
 
 ```sh
 make documentation
